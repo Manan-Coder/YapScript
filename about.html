@@ -13,7 +13,6 @@
             font-family: 'Press Start 2P', cursive;
         }
 
-
         body {
             --size: 100px;
             --color: #f5f5dc;
@@ -24,7 +23,6 @@
                         linear-gradient(45deg, var(--color) var(--bg));
             background-size: var(--size) var(--size);
         }
-
 
         .navbar {
             position: fixed;
@@ -73,7 +71,6 @@
             box-shadow: 0.05em 0.05em;
         }
 
- 
         .about-section {
             padding-top: 4em;
             text-align: center;
@@ -98,13 +95,42 @@
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
         }
 
-
         .about-image {
             max-width: 100%;
             border: 5px solid black;
             border-radius: 10px;
             box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
         }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+            margin-top: 2em;
+        }
+
+        .button-container a {
+            text-decoration: none;
+            color: black;
+            padding: 0.7em 1.5em;
+            background: #f6f6b4;
+            border: 3px solid black;
+            border-radius: 0.4em;
+            box-shadow: 0.1em 0.1em;
+            font-size: 1rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .button-container a:hover {
+            transform: translate(-0.05em, -0.05em);
+            box-shadow: 0.15em 0.15em;
+        }
+
+        .button-container a:active {
+            transform: translate(0.05em, 0.05em);
+            box-shadow: 0.05em 0.05em;
+        }
+
         ::-webkit-scrollbar {
             display: none;
         }
@@ -121,7 +147,6 @@
         </div>
     </nav>
 
- 
     <section class="about-section">
         <h1>Welcome to YapScript!</h1>
         <p>
@@ -142,6 +167,11 @@
             At YapScript, we celebrate the coder in everyone, one script at a time. So, what are you waiting for? Dive in and start coding!
             We'll meet soon again, till then Keep Yapping!
         </p>
+
+        <div class="button-container">
+            <a href="docs.html">Go to Docs</a>
+            <a href="playground.html">Try Playground</a>
+        </div>
     </section>
 </body>
 </html>
