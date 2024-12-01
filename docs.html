@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YapScript Documentation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        html, body {
+            margin: 0;
+            height: 100%;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        body {
+            --size: 100px;
+            --color: #f5f5dc;
+            --l: var(--color) 20%, #0000 0;
+            --bg: 35%, #add8e6 0 45%, var(--color) 0;
+            background: linear-gradient(45deg, var(--l) 45%, var(--color) 0 70%, #0000 0),
+                        linear-gradient(-45deg, var(--l) var(--bg) 70%, #0000 0),
+                        linear-gradient(45deg, var(--color) var(--bg));
+            background-size: var(--size) var(--size);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #c0e6f2;
+            padding: 1em 2em;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .navbar-title {
+            font-size: 1.5rem;
+            color: black;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1.5em;
+            margin-right: 4em;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: black;
+            padding: 0.5em 1em;
+            background: #f6f6b4;
+            border: 3px solid black;
+            border-radius: 0.4em;
+            box-shadow: 0.1em 0.1em;
+            font-size: 1rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .navbar-links a:hover {
+            transform: translate(-0.05em, -0.05em);
+            box-shadow: 0.15em 0.15em;
+        }
+
+        .navbar-links a:active {
+            transform: translate(0.05em, 0.05em);
+            box-shadow: 0.05em 0.05em;
+        }
+
+        .docs-section {
+            padding-top: 6em;
+            text-align: center;
+            color: black;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .docs-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .docs-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            background: #f6f6b4;
+            padding: 1em;
+            border: 3px solid black;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .docs-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .docs-buttons a {
+            text-decoration: none;
+            color: black;
+            padding: 1em 2em;
+            background: #f6f6b4;
+            border: 3px solid black;
+            border-radius: 0.4em;
+            font-size: 1.2rem;
+            box-shadow: 0.1em 0.1em;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .docs-buttons a:hover {
+            transform: translate(-0.05em, -0.05em);
+            box-shadow: 0.15em 0.15em;
+        }
+
+        .docs-buttons a:active {
+            transform: translate(0.05em, 0.05em);
+            box-shadow: 0.05em 0.05em;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-title">YapScript Documentation</div>
+        <div class="navbar-links">
+            <a href="index.html">Home</a>
+            <a href="playground.html">Playground</a>
+            <a href="about.html">About</a>
+        </div>
+    </nav>
+
+    <section class="docs-section">
+        <h1>Welcome to YapScript Docs!</h1>
+        <p>
+            Welcome to the official YapScript documentation. This guide will walk you through everything you need to get started with YapScript, our fun and creative programming language. Whether you are a beginner or an experienced coder, YapScript is designed to be intuitive, fun, and educational.
+        </p>
+        <p>
+            The documentation will cover basic to advanced features, how to use YapScript in the Playground, as well as tips and tricks for writing clean, efficient scripts. So buckle up, because coding with YapScript is an adventure in itself!
+        </p>
+
+        <div class="docs-buttons">
+            <a href="about.html">About</a>
+            <a href="docs/tutorial.html">Tutorials</a>
+        </div>
+    </section>
+
+</body>
+</html>
