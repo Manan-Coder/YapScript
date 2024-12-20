@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YapScript Tutorials</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        html, body {
+            margin: 0;
+            height: 100%;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        body {
+            --size: 100px;
+            --color: #f5f5dc;
+            --l: var(--color) 20%, #0000 0;
+            --bg: 35%, #add8e6 0 45%, var(--color) 0;
+            background: linear-gradient(45deg, var(--l) 45%, var(--color) 0 70%, #0000 0),
+                        linear-gradient(-45deg, var(--l) var(--bg) 70%, #0000 0),
+                        linear-gradient(45deg, var(--color) var(--bg));
+            background-size: var(--size) var(--size);
+            color: black;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #c0e6f2;
+            padding: 1em 2em;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .navbar-title {
+            font-size: 1.5rem;
+            color: black;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 1.5em;
+            margin-right: 4em;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: black;
+            padding: 0.5em 1em;
+            background: #f6f6b4;
+            border: 3px solid black;
+            border-radius: 0.4em;
+            box-shadow: 0.1em 0.1em;
+            font-size: 1rem;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .navbar-links a:hover {
+            transform: translate(-0.05em, -0.05em);
+            box-shadow: 0.15em 0.15em;
+        }
+
+        .navbar-links a:active {
+            transform: translate(0.05em, 0.05em);
+            box-shadow: 0.05em 0.05em;
+        }
+
+        .tutorial-section {
+            margin: 5em 1em 2em 1em;
+            padding: 2em;
+            background: #f6f6b4;
+            border: 3px solid black;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tutorial-section h1 {
+            text-align: center;
+        }
+
+        .concept {
+            margin: 1.5em 0;
+        }
+
+        .concept button {
+            width: 100%;
+            background: #add8e6;
+            border: 2px solid black;
+            color: black;
+            font-size: 1.5rem;
+            font-family: inherit;
+            text-align: left;
+            padding: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 3px 3px black;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .concept button:hover {
+            transform: translate(-0.05em, -0.05em);
+            box-shadow: 4px 4px black;
+        }
+
+        .concept-content {
+            display: none;
+            margin-top: 1em;
+            background: #282c34;
+            color: #f8f8f2;
+            padding: 1.5em;
+            border-radius: 5px;
+            box-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .concept-content p {
+            margin-bottom: 1em;
+            font-size: 1.2rem;
+        }
+
+        .concept-content pre {
+            background: #1d1f21;
+            color: #c5c8c6;
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-title">YapScript Tutorials</div>
+        <div class="navbar-links">
+            <a href="index.html">Home</a>
+            <a href="docs.html">Docs</a>
+            <a href="playground.html">Playground</a>
+        </div>
+    </nav>
+
+    <section class="tutorial-section">
+        <h1>YapScript Tutorials</h1>
+        <div class="concept">
+            <button onclick="toggleContent(this)">1. Print Statements (yap)</button>
+            <div class="concept-content">
+                <p>The 'yap' keyword is used to output text to the screen. It is similar to 'print' in other languages.</p>
+                <pre>
+yap ("Hello, YapScript!");
+                </pre>
+            </div>
+        </div>
+
+        <div class="concept">
+            <button onclick="toggleContent(this)">2. Variable Declaration (kick off)</button>
+            <div class="concept-content">
+                <p>Use 'kick off' to declare variables in YapScript. It's the language's way to introduce a variable.</p>
+                <pre>
+kick off num = 42;
+kick off name = "YapScript";
+                </pre>
+            </div>
+        </div>
+
+
+        <div class="concept">
+            <button onclick="toggleContent(this)">3. Input (tellMe)</button>
+            <div class="concept-content">
+                <p>The 'tellMe' keyword takes user input and stores it in a variable.</p>
+                <pre>
+kick off x = tellMe("What's your name?")
+                </pre>
+            </div>
+        </div>
+
+        <div class="concept">
+            <button onclick="toggleContent(this)">4. Functions (letHimCook)</button>
+            <div class="concept-content">
+                <p>Define reusable blocks of code using the 'letHimCook' keyword.</p>
+                <pre>
+letHimCook greet() {
+    yap ("Welcome to YapScript!");
+}
+greet();
+                </pre>
+            </div>
+        </div>
+
+
+        <div class="concept">
+            <button onclick="toggleContent(this)">5. If-Else (ohhReally, nahMan)</button>
+            <div class="concept-content">
+                <p>'ohhReally' starts an if block, and 'nahMan' starts an else block. These are used for conditional logic.</p>
+                <pre>
+ohhReally (num > 10) {
+    yap ("Number is greater than 10!");
+} nahMan {
+    yap ("Number is 10 or less!");
+}
+                </pre>
+            </div>
+        </div>
+
+
+        <div class="concept">
+            <button onclick="toggleContent(this)">6. Loops (LoopyLoopy)</button>
+            <div class="concept-content">
+                <p>'LoopyLoopy' is used for creating loops, similar to for or while loops in other languages.</p>
+                <pre>
+LoopyLoopy (i = 0; i < 5; i++) {
+    yap ("Iteration: " + i);
+}
+                </pre>
+            </div>
+        </div>
+        <div class="concept">
+            <button onclick="toggleContent(this)">7. Hello World Program</button>
+            <div class="concept-content">
+                <p>Here’s a simple "Hello World" program in YapScript:</p>
+                <pre>
+yap ("Hello, World!");
+                </pre>
+            </div>
+        </div>
+
+        <div class="concept">
+            <button onclick="toggleContent(this)">8. Greeting Function with Name Input</button>
+            <div class="concept-content">
+                <p>This program asks for a name and greets the user:</p>
+                <pre>
+                    letHimCook greet(L){
+                        yap("Hello "+L);
+                    }
+                    kick off x = tellMe("What's your name??")
+                    greet(x);
+                </pre>
+            </div>
+        </div>
+
+        <!-- Example Program: If-Else Function -->
+        <div class="concept">
+            <button onclick="toggleContent(this)">9. If-Else Example</button>
+            <div class="concept-content">
+                <p>Here’s a simple if-else function:</p>
+                <pre>
+kick off num = tellMe("Enter the number")
+ohhReally (num > 10) {
+    yap ("Number is greater than 10!");
+} nahMan {
+    yap ("Number is 10 or less!");
+}
+                </pre>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        function toggleContent(button) {
+            const content = button.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        }
+        
+    </script>
+
+</body>
+</html>
