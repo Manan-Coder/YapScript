@@ -177,10 +177,10 @@
 
 
         <script>
-            // Store the original console.log to prevent multiple overrides
+      
 const originalConsoleLog = console.log;
 
-// Redirect console.log to the output container
+
 function redirectConsole(output) {
     console.log = function (...args) {
         output.textContent += args.join(' ') + '\n';
@@ -188,12 +188,11 @@ function redirectConsole(output) {
     };
 }
 
-// Main runCode function
+
 function runCode() {
     const codeEditor = document.querySelector('.code-editor');
     const output = document.getElementById('output');
 
-    // Custom keyword mapping
     const keywordMap = {
         'yap': 'console.log',
         'kick off': 'let',
@@ -204,7 +203,7 @@ function runCode() {
         'LoopyLoopy': 'for'
     };
 
-    // Replace custom keywords with JavaScript equivalents
+ 
     let code = codeEditor.value;
 
     for (const [custom, jsEquivalent] of Object.entries(keywordMap)) {
@@ -212,17 +211,15 @@ function runCode() {
         code = code.replace(regex, jsEquivalent);
     }
 
-    // Debugging: Show transformed code in console
+
     console.log("Transformed Code:", code);
 
-    // Clear previous output
+   
     output.textContent = '';
 
-    // Reset console.log redirection to avoid multiple overrides
-    console.log = originalConsoleLog; // Restore original first
-    redirectConsole(output); // Redirect again
+    console.log = originalConsoleLog; 
+    redirectConsole(output); 
 
-    // Execute the transformed JavaScript code
     try {
         const result = eval(code);
         if (result !== undefined) {
