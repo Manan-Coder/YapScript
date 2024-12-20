@@ -206,7 +206,7 @@ function runCode() {
 
     let code = codeEditor.value;
 
-    code = code.replace(/(["'`])(?:\\.|[^\1\\])*?\1|(\b(?:yap|kick off|ohhReally|nahMan|tellMe|WingardiumLeviosa|LoopyLoopy)\b)/g, (match, quoted, keyword) => {
+    code = code.replace(/(["'`])(?:\\.|[^\1\\])*?\1|(\b(?:yap|kick off|ohhReally|nahMan|tellMe|letHimCook|LoopyLoopy)\b)/g, (match, quoted, keyword) => {
         if (quoted) {
             return match;
         } else if (keyword) {
