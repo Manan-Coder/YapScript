@@ -193,6 +193,7 @@ function runCode() {
     const codeEditor = document.querySelector('.code-editor');
     const output = document.getElementById('output');
 
+  
     const keywordMap = {
         'yap': 'console.log',
         'kick off': 'let',
@@ -203,19 +204,21 @@ function runCode() {
         'LoopyLoopy': 'for'
     };
 
- 
     let code = codeEditor.value;
 
-    for (const [custom, jsEquivalent] of Object.entries(keywordMap)) {
-        const regex = new RegExp(`\\b${custom}\\b`, 'g');
-        code = code.replace(regex, jsEquivalent);
-    }
-
+    code = code.replace(/(["'`])(?:\\.|[^\1\\])*?\1|(\b(?:yap|kick off|ohhReally|nahMan|tellMe|WingardiumLeviosa|LoopyLoopy)\b)/g, (match, quoted, keyword) => {
+        if (quoted) {
+            return match;
+        } else if (keyword) {
+            return keywordMap[keyword];
+        }
+        return match;
+    });
 
     console.log("Transformed Code:", code);
 
-   
     output.textContent = '';
+
 
     console.log = originalConsoleLog; 
     redirectConsole(output); 
