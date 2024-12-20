@@ -52,7 +52,7 @@ This is a lil tutorial to get started with YapScript!
 
 7) Here’s a simple "Hello World" program in YapScript:
 
-      yap ("Hello, World!");
+      ```yap ("Hello, World!");```
 
 8) Greeting Function with Name Input
 This program asks for a name and greets the user:
