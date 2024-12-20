@@ -175,22 +175,68 @@
         </div>
     </div>
 
-    <script>
-        function runCode() {
-            const codeEditor = document.querySelector('.code-editor');
-            const output = document.getElementById('output');
 
-            try {
-    
-                const result = eval(codeEditor.value);
-                output.textContent = result !== undefined ? result : "Code executed successfully.";
-            } catch (error) {
-                output.textContent = "Error: " + error.message;
-            }
+        <script>
+            // Store the original console.log to prevent multiple overrides
+const originalConsoleLog = console.log;
 
+// Redirect console.log to the output container
+function redirectConsole(output) {
+    console.log = function (...args) {
+        output.textContent += args.join(' ') + '\n';
+        originalConsoleLog.apply(console, args);
+    };
+}
 
-            output.scrollIntoView({ behavior: 'smooth', block: 'start' });
+// Main runCode function
+function runCode() {
+    const codeEditor = document.querySelector('.code-editor');
+    const output = document.getElementById('output');
+
+    // Custom keyword mapping
+    const keywordMap = {
+        'yap': 'console.log',
+        'kick off': 'let',
+        'ohhReally': 'if',
+        'nahMan': 'else',
+        'tellMe': 'prompt',
+        'letHimCook': 'function',
+        'LoopyLoopy': 'for'
+    };
+
+    // Replace custom keywords with JavaScript equivalents
+    let code = codeEditor.value;
+
+    for (const [custom, jsEquivalent] of Object.entries(keywordMap)) {
+        const regex = new RegExp(`\\b${custom}\\b`, 'g');
+        code = code.replace(regex, jsEquivalent);
+    }
+
+    // Debugging: Show transformed code in console
+    console.log("Transformed Code:", code);
+
+    // Clear previous output
+    output.textContent = '';
+
+    // Reset console.log redirection to avoid multiple overrides
+    console.log = originalConsoleLog; // Restore original first
+    redirectConsole(output); // Redirect again
+
+    // Execute the transformed JavaScript code
+    try {
+        const result = eval(code);
+        if (result !== undefined) {
+            output.textContent += result;
+        } else if (output.textContent.trim() === '') {
+            output.textContent = "Code executed successfully.";
         }
-    </script>
+    } catch (error) {
+        output.textContent = "Error: " + error.message;
+    }
+
+    output.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+        </script>
 </body>
 </html>
