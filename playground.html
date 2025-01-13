@@ -187,7 +187,7 @@ function redirectConsole(output) {
         originalConsoleLog.apply(console, args);
     };
 }
-        function solveLnr(equation) {
+        function solve(equation) {
             try {
                 const [lhs, rhs] = equation.split('=').map(side => side.trim());
                 let varb, coeff = 0, cons = 0;
@@ -220,7 +220,7 @@ function runCode() {
         'tellMe': 'prompt',
         'letHimCook': 'function',
         'LoopyLoopy': 'for',
-        'solve': 'solveLnr'
+        'solve': 'solve'
     };
 
     let code = codeEditor.value;
@@ -255,7 +255,7 @@ function runCode() {
 
     output.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-window.solveLnr = solveLnr;
+window.solve = solve;
         </script>
 </body>
 </html>
