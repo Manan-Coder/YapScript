@@ -187,7 +187,24 @@ function redirectConsole(output) {
         originalConsoleLog.apply(console, args);
     };
 }
-
+        function solveExn(exn) {
+            try {
+                const [lhs, rhs] = exn.split('=').map(side => side.trim());
+                let varb, coeff = 0, cons = 0;
+        
+                const match = lhs.match(/(-?\d*)([a-z])\s*([\+\-])\s*(\d+)/);
+                if (match) {
+                    coeff = parseInt(match[1]) || 1;
+                    varb = match[2];
+                    cons = parseInt(match[3] + match[4]);
+                }
+        
+                const result = (parseInt(rhs) - cons) / coeff;
+                return `${varb} = ${result}`;
+            } catch {
+                return "Error: Unable to solve the equation.";
+            }
+        }
 
 function runCode() {
     const codeEditor = document.querySelector('.code-editor');
@@ -201,7 +218,8 @@ function runCode() {
         'nahMan': 'else',
         'tellMe': 'prompt',
         'letHimCook': 'function',
-        'LoopyLoopy': 'for'
+        'LoopyLoopy': 'for',
+        'solve':'solveExn'
     };
 
     let code = codeEditor.value;
@@ -236,7 +254,7 @@ function runCode() {
 
     output.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
+window.solveExn = solveExn;
         </script>
 </body>
 </html>
