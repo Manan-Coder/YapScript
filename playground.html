@@ -191,6 +191,7 @@ function redirectConsole(output) {
             try {
                 const [lhs, rhs] = equation.split('=').map(side => side.trim());
                 let varb, coeff = 0, cons = 0;
+        
     
                 const match = lhs.match(/(-?\d*)([a-z])\s*([\+\-])\s*(\d+)/);
                 if (match) {
