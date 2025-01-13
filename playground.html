@@ -187,11 +187,11 @@ function redirectConsole(output) {
         originalConsoleLog.apply(console, args);
     };
 }
-        function solveExn(exn) {
+        function solveLnr(equation) {
             try {
-                const [lhs, rhs] = exn.split('=').map(side => side.trim());
+                const [lhs, rhs] = equation.split('=').map(side => side.trim());
                 let varb, coeff = 0, cons = 0;
-        
+    
                 const match = lhs.match(/(-?\d*)([a-z])\s*([\+\-])\s*(\d+)/);
                 if (match) {
                     coeff = parseInt(match[1]) || 1;
@@ -219,7 +219,7 @@ function runCode() {
         'tellMe': 'prompt',
         'letHimCook': 'function',
         'LoopyLoopy': 'for',
-        'solve':solveExn
+        'solve': 'solveLnr'
     };
 
     let code = codeEditor.value;
@@ -254,7 +254,7 @@ function runCode() {
 
     output.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-//window.solveExn = solveExn;
+window.solveLnr = solveLnr;
         </script>
 </body>
 </html>
