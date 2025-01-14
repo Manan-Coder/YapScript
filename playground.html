@@ -187,6 +187,33 @@ function redirectConsole(output) {
         originalConsoleLog.apply(console, args);
     };
 }
+            function solveQuad(equation) {
+            try {
+                const [lhs, rhs] = equation.split('=').map(side => side.trim());
+                const match = lhs.match(/(-?\d*)\s*\*?\s*([a-z])\^2\s*([\+\-])\s*(\d*)\s*\*?\s*\2\s*([\+\-])\s*(\d+)/);
+        
+                if (!match) throw new Error("Invalid quadratic equation format.");
+        
+                const a = parseInt(match[1]) || 1;
+                const b = parseInt(match[3] + match[4]) || 0;
+                const c = parseInt(match[5] + match[6]) || 0 - parseInt(rhs || 0);
+        
+                const discrimint = b ** 2 - 4 * a * c;
+        
+                if (discrimnt < 0) {
+                    return "No real roots.";
+                } else if (discrimint === 0) {
+                    const root = -b / (2 * a);
+                    return `x = ${root}`;
+                } else {
+                    const root1 = (-b + Math.sqrt(discrimint)) / (2 * a);
+                    const root2 = (-b - Math.sqrt(discrimint)) / (2 * a);
+                    return `Either x = ${root1}, or x = ${root2}`;
+                }
+            } catch {
+                return "Error: Unable to solve the quadratic equation.";
+            }
+        }
         function solve(equation) {
             try {
                 const [lhs, rhs] = equation.split('=').map(side => side.trim());
@@ -221,6 +248,7 @@ function runCode() {
         'letHimCook': 'function',
         'LoopyLoopy': 'for',
         'solve': 'solve'
+        'solve_quad' : 'solveQuad'
     };
 
     let code = codeEditor.value;
@@ -256,6 +284,7 @@ function runCode() {
     output.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 window.solve = solve;
+window.solveQuad = solveQuad;
         </script>
 </body>
 </html>
