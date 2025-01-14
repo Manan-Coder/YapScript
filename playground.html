@@ -187,7 +187,7 @@ function redirectConsole(output) {
         originalConsoleLog.apply(console, args);
     };
 }
-            function solveQuad(equation) {
+            function solve_quad(equation) {
             try {
                 const [lhs, rhs] = equation.split('=').map(side => side.trim());
                 const match = lhs.match(/(-?\d*)\s*\*?\s*([a-z])\^2\s*([\+\-])\s*(\d*)\s*\*?\s*\2\s*([\+\-])\s*(\d+)/);
@@ -248,7 +248,7 @@ function runCode() {
         'letHimCook': 'function',
         'LoopyLoopy': 'for',
         'solve': 'solve',
-        'solve_quad' : 'solveQuad'
+        'solve_quad' : 'solve_quad'
     };
 
     let code = codeEditor.value;
@@ -284,7 +284,7 @@ function runCode() {
     output.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 window.solve = solve;
-window.solveQuad = solveQuad;
+window.solve_quad = solve_quad;
         </script>
 </body>
 </html>
