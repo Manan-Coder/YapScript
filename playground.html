@@ -187,33 +187,58 @@ function redirectConsole(output) {
         originalConsoleLog.apply(console, args);
     };
 }
-            function solve_quad(equation) {
-            try {
-                const [lhs, rhs] = equation.split('=').map(side => side.trim());
-                const match = lhs.match(/(-?\d*)\s*\*?\s*([a-z])\^2\s*([\+\-])\s*(\d*)\s*\*?\s*\2\s*([\+\-])\s*(\d+)/);
-        
-                if (!match) throw new Error("Invalid quadratic equation format.");
-        
-                const a = parseInt(match[1]) || 1;
-                const b = parseInt(match[3] + match[4]) || 0;
-                const c = parseInt(match[5] + match[6]) || 0 - parseInt(rhs || 0);
-        
-                const discrimint = b ** 2 - 4 * a * c;
-        
-                if (discrimnt < 0) {
-                    return "No real roots.";
-                } else if (discrimint === 0) {
-                    const root = -b / (2 * a);
-                    return `x = ${root}`;
-                } else {
-                    const root1 = (-b + Math.sqrt(discrimint)) / (2 * a);
-                    const root2 = (-b - Math.sqrt(discrimint)) / (2 * a);
-                    return `Either x = ${root1}, or x = ${root2}`;
-                }
-            } catch {
-                return "Error: Unable to solve the quadratic equation.";
-            }
+function solve_quad(equation) {
+    try {
+
+        const [lhs, rhs] = equation.split('=').map(side => side.trim());
+
+    
+        const match = lhs.match(/^(-?\d*)\s*\*?\s*([a-z])\^2\s*([\+\-]?)\s*(\d*)\s*\*?\s*\2\s*([\+\-]?)\s*(\d*)$/);
+
+        if (!match) {
+            throw new Error("Invalid quadratic equation format.");
         }
+
+
+        const aStr = match[1]; 
+        const varb = match[2]; 
+        const bOp = match[3];  
+        const bStr = match[4]; 
+        const cOp = match[5];  
+        const cStr = match[6]; 
+
+        const a = aStr === "" || aStr === "-" ? 
+            (aStr === "-" ? -1 : 1) : 
+            parseInt(aStr);
+
+
+        const b = bStr === "" ? 0 : parseInt(bOp + bStr);
+
+ 
+        const c = cStr === "" ? 0 : parseInt(cOp + cStr);
+
+        const rhsValue = parseInt(rhs) || 0;
+        const adjustedC = c - rhsValue;
+
+        if (a === 0) {
+            throw new Error("Coefficient of x^2 is zero. This is not a quadratic equation.");
+        }
+
+        const discriminant = b ** 2 - 4 * a * adjustedC;
+        if (discriminant < 0) {
+            return "No real roots.";
+        } else if (discriminant === 0) {
+            const root = -b / (2 * a);
+            return `x = ${root}`;
+        } else {
+            const root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+            const root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+            return `Either x = ${root1}, or x = ${root2}`;
+        }
+    } catch (error) {
+        return "Error: " + error.message;
+    }
+}
         function solve(equation) {
             try {
                 const [lhs, rhs] = equation.split('=').map(side => side.trim());
