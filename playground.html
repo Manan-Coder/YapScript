@@ -274,6 +274,136 @@ function solve_quad(equation) {
             }
             return "Invalid circuit type.";
         }
+//yo bartosz checkpoint for you
+function getElement(element) {
+            const periodicT = {
+                H: { name: "Hydrogen", atomicN: 1 },
+                He: { name: "Helium", atomicN: 2 },
+                Li: { name: "Lithium", atomicN: 3 },
+                Be: { name: "Beryllium", atomicN: 4 },
+                B: { name: "Boron", atomicN: 5 },
+                C: { name: "Carbon", atomicN: 6 },
+                N: { name: "Nitrogen", atomicN: 7 },
+                O: { name: "Oxygen", atomicN: 8 },
+                F: { name: "Fluorine", atomicN: 9 },
+                Ne: { name: "Neon", atomicN: 10 },
+                Na: { name: "Sodium", atomicN: 11 },
+                Mg: { name: "Magnesium", atomicN: 12 },
+                Al: { name: "Aluminum", atomicN: 13 },
+                Si: { name: "Silicon", atomicN: 14 },
+                P: { name: "Phosphorus", atomicN: 15 },
+                S: { name: "Sulfur", atomicN: 16 },
+                Cl: { name: "Chlorine", atomicN: 17 },
+                Ar: { name: "Argon", atomicN: 18 },
+                K: { name: "Potassium", atomicN: 19 },
+                Ca: { name: "Calcium", atomicN: 20 },
+                Sc: { name: "Scandium", atomicN: 21 },
+                Ti: { name: "Titanium", atomicN: 22 },
+                V: { name: "Vanadium", atomicN: 23 },
+                Cr: { name: "Chromium", atomicN: 24 },
+                Mn: { name: "Manganese", atomicN: 25 },
+                Fe: { name: "Iron", atomicN: 26 },
+                Co: { name: "Cobalt", atomicN: 27 },
+                Ni: { name: "Nickel", atomicN: 28 },
+                Cu: { name: "Copper", atomicN: 29 },
+                Zn: { name: "Zinc", atomicN: 30 },
+                Ga: { name: "Gallium", atomicN: 31 },
+                Ge: { name: "Germanium", atomicN: 32 },
+                As: { name: "Arsenic", atomicN: 33 },
+                Se: { name: "Selenium", atomicN: 34 },
+                Br: { name: "Bromine", atomicN: 35 },
+                Kr: { name: "Krypton", atomicN: 36 },
+                Rb: { name: "Rubidium", atomicN: 37 },
+                Sr: { name: "Strontium", atomicN: 38 },
+                Y: { name: "Yttrium", atomicN: 39 },
+                Zr: { name: "Zirconium", atomicN: 40 },
+                Nb: { name: "Niobium", atomicN: 41 },
+                Mo: { name: "Molybdenum", atomicN: 42 },
+                Tc: { name: "Technetium", atomicN: 43 },
+                Ru: { name: "Ruthenium", atomicN: 44 },
+                Rh: { name: "Rhodium", atomicN: 45 },
+                Pd: { name: "Palladium", atomicN: 46 },
+                Ag: { name: "Silver", atomicN: 47 },
+                Cd: { name: "Cadmium", atomicN: 48 },
+                In: { name: "Indium", atomicN: 49 },
+                Sn: { name: "Tin", atomicN: 50 },
+                Sb: { name: "Antimony", atomicN: 51 },
+                Te: { name: "Tellurium", atomicN: 52 },
+                I: { name: "Iodine", atomicN: 53 },
+                Xe: { name: "Xenon", atomicN: 54 },
+                Cs: { name: "Cesium", atomicN: 55 },
+                Ba: { name: "Barium", atomicN: 56 },
+                La: { name: "Lanthanum", atomicN: 57 },
+                Ce: { name: "Cerium", atomicN: 58 },
+                Pr: { name: "Praseodymium", atomicN: 59 },
+                Nd: { name: "Neodymium", atomicN: 60 },
+                Pm: { name: "Promethium", atomicN: 61 },
+                Sm: { name: "Samarium", atomicN: 62 },
+                Eu: { name: "Europium", atomicN: 63 },
+                Gd: { name: "Gadolinium", atomicN: 64 },
+                Tb: { name: "Terbium", atomicN: 65 },
+                Dy: { name: "Dysprosium", atomicN: 66 },
+                Ho: { name: "Holmium", atomicN: 67 },
+                Er: { name: "Erbium", atomicN: 68 },
+                Tm: { name: "Thulium", atomicN: 69 },
+                Yb: { name: "Ytterbium", atomicN: 70 },
+                Lu: { name: "Lutetium", atomicN: 71 },
+                Hf: { name: "Hafnium", atomicN: 72 },
+                Ta: { name: "Tantalum", atomicN: 73 },
+                W: { name: "Tungsten", atomicN: 74 },
+                Re: { name: "Rhenium", atomicN: 75 },
+                Os: { name: "Osmium", atomicN: 76 },
+                Ir: { name: "Iridium", atomicN: 77 },
+                Pt: { name: "Platinum", atomicN: 78 },
+                Au: { name: "Gold", atomicN: 79 },
+                Hg: { name: "Mercury", atomicN: 80 },
+                Tl: { name: "Thallium", atomicN: 81 },
+                Pb: { name: "Lead", atomicN: 82 },
+                Bi: { name: "Bismuth", atomicN: 83 },
+                Po: { name: "Polonium", atomicN: 84 },
+                At: { name: "Astatine", atomicN: 85 },
+                Rn: { name: "Radon", atomicN: 86 },
+                Fr: { name: "Francium", atomicN: 87 },
+                Ra: { name: "Radium", atomicN: 88 },
+                Ac: { name: "Actinium", atomicN: 89 },
+                Th: { name: "Thorium", atomicN: 90 },
+                Pa: { name: "Protactinium", atomicN: 91 },
+                U: { name: "Uranium", atomicN: 92 },
+                Np: { name: "Neptunium", atomicN: 93 },
+                Pu: { name: "Plutonium", atomicN: 94 },
+                Am: { name: "Americium", atomicN: 95 },
+                Cm: { name: "Curium", atomicN: 96 },
+                Bk: { name: "Berkelium", atomicN: 97 },
+                Cf: { name: "Californium", atomicN: 98 },
+                Es: { name: "Einsteinium", atomicN: 99 },
+                Fm: { name: "Fermium", atomicN: 100 },
+                Md: { name: "Mendelevium", atomicN: 101 },
+                No: { name: "Nobelium", atomicN: 102 },
+                Lr: { name: "Lawrencium", atomicN: 103 },
+                Rf: { name: "Rutherfordium", atomicN: 104 },
+                Db: { name: "Dubnium", atomicN: 105 },
+                Sg: { name: "Seaborgium", atomicN: 106 },
+                Bh: { name: "Bohrium", atomicN: 107 },
+                Hs: { name: "Hassium", atomicN: 108 },
+                Mt: { name: "Meitnerium", atomicN: 109 },
+                Ds: { name: "Darmstadtium", atomicN: 110 },
+                Rg: { name: "Roentgenium", atomicN: 111 },
+                Cn: { name: "Copernicium", atomicN: 112 },
+                Nh: { name: "Nihonium", atomicN: 113 },
+                Fl: { name: "Flerovium", atomicN: 114 },
+                Mc: { name: "Moscovium", atomicN: 115 },
+                Lv: { name: "Livermorium", atomicN: 116 },
+                Ts: { name: "Tennessine", atomicN: 117 },
+                Og: { name: "Oganesson", atomicN: 118 }
+            };
+            
+        
+            const elementInfo = periodicT[element];
+            if (elementInfo) {
+                return `Name: ${elementInfo.name}, Atomic Number: ${elementInfo.atomicN}`;
+            }
+            return "Element not found.";
+        }
 function runCode() {
     const codeEditor = document.querySelector('.code-editor');
     const output = document.getElementById('output');
@@ -289,7 +419,8 @@ function runCode() {
         'LoopyLoopy': 'for',
         'solve': 'solve',
         'solve_quad' : 'solve_quad',
-        'calculateResistance' : 'calculateResistance'
+        'calculateResistance' : 'calculateResistance',
+        'getElement': 'getElement'
     };
 
     let code = codeEditor.value;
@@ -324,9 +455,12 @@ function runCode() {
 
     output.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+
 window.solve = solve;
 window.solve_quad = solve_quad;
 window.calculateResistance = calculateResistance;
+window.getElement = getElement;
         </script>
 </body>
 </html>
