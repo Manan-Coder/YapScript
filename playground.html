@@ -404,6 +404,18 @@ function getElement(element) {
             }
             return "Element not found.";
         }
+     function getTable(n){
+        let table = [];
+        for(let i = 1; i <= 10; i++){
+            table.push(n * i);
+        }
+            return table;
+        }
+function getFactorial(n) {
+    if (n === 0 || n === 1) return 1;
+        return n * getFactorial(n - 1);
+        }
+        
 function runCode() {
     const codeEditor = document.querySelector('.code-editor');
     const output = document.getElementById('output');
@@ -420,7 +432,9 @@ function runCode() {
         'solve': 'solve',
         'solve_quad' : 'solve_quad',
         'calculateResistance' : 'calculateResistance',
-        'getElement': 'getElement'
+        'getElement': 'getElement',
+        'getTable' : 'getTable',
+        'getFactorial' : 'getFactorial'
     };
 
     let code = codeEditor.value;
@@ -461,6 +475,8 @@ window.solve = solve;
 window.solve_quad = solve_quad;
 window.calculateResistance = calculateResistance;
 window.getElement = getElement;
+window.getTable = getTable;
+window.getFactorial = getFactorial;
         </script>
 </body>
 </html>
