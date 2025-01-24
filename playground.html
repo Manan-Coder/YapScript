@@ -258,7 +258,22 @@ function solve_quad(equation) {
                 return "Error: Unable to solve the equation.";
             }
         }
-
+        function calculateResistance(rstrs, type = "series") { //rstrs= resistors
+            if (type === "series") {
+                let total = 0;
+                for (let i = 0; i < rstrs.length; i++) {
+                    total += rstrs[i];
+                }
+                return total;
+            } else if (type === "parallel") {
+                let total = 0;
+                for (let i = 0; i < rstrs.length; i++) {
+                    total += 1 / rstrs[i];
+                }
+                return 1 / total;
+            }
+            return "Invalid circuit type.";
+        }
 function runCode() {
     const codeEditor = document.querySelector('.code-editor');
     const output = document.getElementById('output');
@@ -273,7 +288,8 @@ function runCode() {
         'letHimCook': 'function',
         'LoopyLoopy': 'for',
         'solve': 'solve',
-        'solve_quad' : 'solve_quad'
+        'solve_quad' : 'solve_quad',
+        'calculateResistance' : 'calculateResistance'
     };
 
     let code = codeEditor.value;
@@ -310,6 +326,7 @@ function runCode() {
 }
 window.solve = solve;
 window.solve_quad = solve_quad;
+window.calculateResistance = calculateResistance;
         </script>
 </body>
 </html>
