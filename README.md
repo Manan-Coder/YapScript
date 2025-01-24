@@ -1,10 +1,10 @@
 YapScript! is a toy-programming language made in JavaScript, it was supposed to be made in Python,but considering web implementation, I changed the language and translated the logic to Javascript.
 It's website is pretty simple, the main page has all the links to About,Docs, and Playground page.
 
-Main Page - https://manan-coder.github.io/YapScript/index.html\
-About Page - https://manan-coder.github.io/YapScript/about.html\
-Docs - https://manan-coder.github.io/YapScript/docs.html\
-Playground - https://manan-coder.github.io/YapScript/playground.html\
+Main Page - https://manan-coder.github.io/YapScript/index.html
+About Page - https://manan-coder.github.io/YapScript/about.html
+Docs - https://manan-coder.github.io/YapScript/docs.html
+Playground - https://manan-coder.github.io/YapScript/playground.html
 
 It's Syntax is also really simple, inspired from famous GenZ slangs!
 
